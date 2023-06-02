@@ -1,9 +1,9 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import { Routes, Route } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar"
-import Sidebar from "./scenes/global/Sidebar"
-import Dashboard from "./scenes/dashboard"
+import Topbar from "./scenes/global/Topbar";
+import Sidebar from "./scenes/global/Sidebar";
+import Dashboard from "./scenes/dashboard";
 import Calendar from "./scenes/calendar";
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
@@ -14,7 +14,7 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
-import "./index.css"
+import "./index.css";
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -26,7 +26,7 @@ function App() {
           <main className="content">
             <Topbar />
             <Routes>
-            <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />

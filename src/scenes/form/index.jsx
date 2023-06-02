@@ -11,7 +11,7 @@ export default function Form() {
     return (
       <Box m="20px">
         
-          <Header title="Profile Form" subtitle="Welcome to your dashboard" />
+          <Header title="Create User" subtitle="Create a New User Profile" />
         
       </Box>
     )

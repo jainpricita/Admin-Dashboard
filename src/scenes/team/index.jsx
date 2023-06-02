@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { DataGrid } from '@mui/x-data-grid';
-import { mockDataTeam } from "../../data/mockData"
+import { DataGrid } from "@mui/x-data-grid";
+import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
@@ -13,7 +13,7 @@ export default function Team() {
   const columns = [
     {
       field: "id",
-      headerName: "ID"
+      headerName: "ID",
     },
     {
       field: "name",
@@ -55,29 +55,25 @@ export default function Team() {
               access === "admin"
                 ? colors.greenAccent[600]
                 : access === "manager"
-                  ? colors.greenAccent[700]
-                  : colors.greenAccent[700]
+                ? colors.greenAccent[700]
+                : colors.greenAccent[700]
             }
             borderRadius="4px"
           >
+            {access === "admin" ? (
+              <AdminPanelSettingsOutlinedIcon />
+            ) : access === "manager" ? (
+              <SecurityOutlinedIcon />
+            ) : (
+              <LockOpenOutlinedIcon />
+            )}
 
-            {
-              access === "admin"
-                ? <AdminPanelSettingsOutlinedIcon />
-                : access === "manager"
-                  ? <SecurityOutlinedIcon />
-                  : <LockOpenOutlinedIcon />
-            }
-
-            <Typography 
-            color={colors.grey[100]} 
-            sx={{ ml: "5px" }}
-            >{access}
+            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+              {access}
             </Typography>
-
           </Box>
-        )
-      }
+        );
+      },
     },
   ];
   return (
@@ -104,19 +100,14 @@ export default function Team() {
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]}`,
           },
         }}
       >
-      <DataGrid
-      checkboxSelection
-        rows={mockDataTeam}
-        columns={columns} />
+        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
       </Box>
     </Box>
-
-  )
+  );
 }
