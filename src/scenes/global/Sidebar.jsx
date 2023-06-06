@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
@@ -40,6 +40,19 @@ export default function Sidebar() {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+
+  function handleWindowResize() {
+    const currentWidth = window.innerWidth;
+    if (currentWidth <= 960) {
+      setIsCollapsed(true);
+    } else if (currentWidth > 960) {
+      setIsCollapsed(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+  });
+
   return (
     <Box
       sx={{

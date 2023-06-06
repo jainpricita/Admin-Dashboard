@@ -326,7 +326,7 @@ export const mockBarData = [
     kebab: 72,
     kebabColor: "hsl(97, 70%, 50%)",
     donut: 140,
-    donutColor: "hsl(340, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)",
   },
   {
     country: "AE",
@@ -337,7 +337,7 @@ export const mockBarData = [
     kebab: 58,
     kebabColor: "hsl(273, 70%, 50%)",
     donut: 29,
-    donutColor: "hsl(275, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)",
   },
   {
     country: "AF",
@@ -348,7 +348,7 @@ export const mockBarData = [
     kebab: 34,
     kebabColor: "hsl(106, 70%, 50%)",
     donut: 152,
-    donutColor: "hsl(256, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)",
   },
   {
     country: "AG",
@@ -359,8 +359,7 @@ export const mockBarData = [
     kebab: 43,
     kebabColor: "hsl(110, 70%, 50%)",
     donut: 83,
-    donutColor: "hsl(9, 70%, 50%)",
-  },
+    donutColor:  "hsl(177, 70%, 50%)"  },
   {
     country: "AI",
     "hot dog": 81,
@@ -370,7 +369,7 @@ export const mockBarData = [
     kebab: 112,
     kebabColor: "hsl(54, 70%, 50%)",
     donut: 35,
-    donutColor: "hsl(285, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)",
   },
   {
     country: "AL",
@@ -381,7 +380,7 @@ export const mockBarData = [
     kebab: 167,
     kebabColor: "hsl(182, 70%, 50%)",
     donut: 18,
-    donutColor: "hsl(76, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)"
   },
   {
     country: "AM",
@@ -392,7 +391,7 @@ export const mockBarData = [
     kebab: 158,
     kebabColor: "hsl(224, 70%, 50%)",
     donut: 49,
-    donutColor: "hsl(274, 70%, 50%)",
+    donutColor:  "hsl(177, 70%, 50%)",
   },
 ];
 

@@ -14,11 +14,37 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
+import { formatDate } from "@fullcalendar/core";
+
+function handleDateClick(selected) {
+  const title = prompt("Please enter a new title for your event");
+  const calendarApi = selected.view.calendar;
+  calendarApi.unselect();
+  if (title) {
+    calendarApi.addEvent({
+      id: `${selected.dateStr}-${title}`,
+      title,
+      start: selected.startStr,
+      end: selected.endStr,
+      allDay: selected.allDay,
+    });
+  }
+}
+function handleEventClick(selected) {
+  if (
+    window.confirm(
+      `Are you sure you want to delete the event '${selected.event.title}'`
+    )
+  ) {
+    selected.event.remove();
+  }
+}
 
 export default function Calendar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
+
   return (
     <Box m="20px">
       <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
@@ -32,9 +58,37 @@ export default function Calendar() {
         >
           <Typography variant="h5">Events</Typography>
           <List>
-            <ListItem>
-              <ListItemText></ListItemText>
-            </ListItem>
+            {currentEvents.map((event) => (
+              <ListItem
+                key={event.id}
+                sx={{
+                  backgroundColor: colors.greenAccent[500],
+                  margin: "10px 0",
+                  borderRadius: "2px",
+                }}
+              >
+                <ListItemText
+                  primary={event.title}
+                  secondary={
+                    <Typography>
+                      {formatDate(event.start, {
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                      {event.end ? "-" : " "}
+                      {event.end
+                        ? formatDate(event.end, {
+                            hour: "numeric",
+                            minute: "numeric",
+                          })
+                        : "(All Day)"}
+                    </Typography>
+                  }
+                ></ListItemText>
+              </ListItem>
+            ))}
           </List>
         </Box>
         <Box flex="1 1 100%" ml="15px">
@@ -52,6 +106,25 @@ export default function Calendar() {
               end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
             }}
             initialView="dayGridMonth"
+            editable={true}
+            selectable={true}
+            dayMaxEvents={true}
+            select={handleDateClick}
+            eventClick={handleEventClick}
+            eventsSet={(events) => setCurrentEvents(events)}
+            initialEvents={[
+              {
+                id: "12315",
+                title: "All-day event",
+                date: "2023-06-05",
+              },
+              {
+                id: "5123",
+                title: "Timed event",
+                start: "2023-06-14T12:30:00",
+                end: "2023-06-14T16:30:00",
+              },
+            ]}
           />
         </Box>
       </Box>
