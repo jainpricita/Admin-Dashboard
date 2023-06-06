@@ -51,7 +51,11 @@ export default function BarChart({ isDashboard = false }) {
       keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
       indexBy="country"
       theme={chartTheme}
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+      margin={
+        isDashboard
+          ? { top: 50, right: 20, bottom: 40, left: 40 }
+          : { top: 50, right: 130, bottom: 50, left: 60 }
+      }
       padding={0.3}
       legends={[
         {

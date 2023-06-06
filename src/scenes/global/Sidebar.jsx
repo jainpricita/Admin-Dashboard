@@ -38,7 +38,8 @@ function Item({ title, to, icon, selected, setSelected }) {
 export default function Sidebar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const viewWidth = window.innerWidth;
+  const [isCollapsed, setIsCollapsed] = useState(viewWidth<=960?true:false);
   const [selected, setSelected] = useState("Dashboard");
 
   function handleWindowResize() {
